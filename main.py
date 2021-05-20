@@ -33,6 +33,7 @@ resource_fields = {
     'views': fields.Integer
 }
 
+# class cointains get and post requests
 class Messages(Resource):
     @marshal_with(resource_fields)
     def get(self):
@@ -47,14 +48,15 @@ class Messages(Resource):
     @marshal_with(resource_fields)
     def post(self):
         args = message_args.parse_args()
-        if args['content']=="":
+        if len(args['content'])<1:
             abort(404, message="Content of the message cannot be blank")
         message = MessageModel( content=args['content'], views=0)
         db.session.add(message)
         db.session.commit()
         return message, 201
 
-class MessageChange(Resource):
+# class cointains delete and patch requestes
+class MessageChanges(Resource):
     @auth.login_required
     def delete(self, message_id):
         result = MessageModel.query.filter_by(id=message_id).first()
@@ -77,7 +79,7 @@ class MessageChange(Resource):
         return result
 
 api.add_resource(Messages, "/messages/")
-api.add_resource(MessageChange, "/messages/<int:message_id>")
+api.add_resource(MessageChanges, "/messages/<int:message_id>")
 
 if __name__ == '__main__':
     app.run(debug=True)
