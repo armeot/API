@@ -47,6 +47,8 @@ class Messages(Resource):
     @marshal_with(resource_fields)
     def post(self):
         args = message_args.parse_args()
+        if args['content']=="":
+            abort(404, message="Content of the message cannot be blank")
         message = MessageModel( content=args['content'], views=0)
         db.session.add(message)
         db.session.commit()
@@ -55,10 +57,13 @@ class Messages(Resource):
 class MessageChange(Resource):
     @auth.login_required
     def delete(self, message_id):
+        result = MessageModel.query.filter_by(id=message_id).first()
+        if not result:
+            abort(404, message="Could not find message with that id.")
         MessageModel.query.filter_by(id=message_id).delete()
         db.session.commit()
         return 'Mesage deleted', 204
-        
+
     @auth.login_required
     @marshal_with(resource_fields)
     def patch(self, message_id):
