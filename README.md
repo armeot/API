@@ -13,13 +13,13 @@ import requests
 ```
 
 #### GET - returns a list of messages  
-route: /message/
+Route: https://armeot-api.herokuapp.com/message/
 ```
 requests.get("https://armeot-api.herokuapp.com/messages/")
 ```
 
 #### POST - allows to creates a new message  
-route: /message/  
+Route: https://armeot-api.herokuapp.com/message/  
 After specifying the route, provide the content of the message and infomation needed for authentication (username and password).
 ```
 USER_DATA = ['username', 'password']
@@ -29,7 +29,7 @@ requests.post("https://armeot-api.herokuapp.com/messages/"
 ```
 
 #### PATCH - allows to edits a content message
-route: /message/{id}
+Route: https://armeot-api.herokuapp.com/message/{id}
 ```
 USER_DATA = ['username', 'password']
 requests.patch("https://armeot-api.herokuapp.com/messages/1"
@@ -38,7 +38,7 @@ requests.patch("https://armeot-api.herokuapp.com/messages/1"
 ```
 
 #### DELETE - allows to deletes a message
-route: /message/{id}
+Route: https://armeot-api.herokuapp.com//message/{id}
 ```
 USER_DATA = ['username', 'password']
 requests.delete("https://armeot-api.herokuapp.com/messages/1"
