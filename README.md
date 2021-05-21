@@ -3,10 +3,22 @@ Web API created with Python 3.9.5 using FLask, RESTful and SQLAlchemy.
 It allows to create, see, edit and delete short messages.
 
 ## Launch
+### a. Locally
+To begin with install all of the requirements.  
+Open a console and go to the project folder. Type:
+```
+pip3 install -r requirements.txt
+```
+To launch the project. Type:
+```
+python3 main.py
+```
+No you can acces it at:  http://127.0.0.1:5000/  
+### b. Globally
 API is deployed at: https://armeot-api.herokuapp.com/
 
 ## How to use
-To begin with import HTTPBasicAith and requests.
+First import HTTPBasicAuth and requests.
 ```
 from flask_httpauth import HTTPBasicAuth
 import requests
@@ -17,6 +29,7 @@ Route: https://armeot-api.herokuapp.com/message/
 ```
 requests.get("https://armeot-api.herokuapp.com/messages/")
 ```
+As a result api will return a data in json format.
 
 #### POST - allows to creates a new message  
 Route: https://armeot-api.herokuapp.com/message/  
@@ -30,6 +43,7 @@ requests.post("https://armeot-api.herokuapp.com/messages/"
 
 #### PATCH - allows to edits a content message
 Route: https://armeot-api.herokuapp.com/message/{id}
+After specifying the route and choosing an id, provide the new content of the message and infomation needed for authentication (username and password).
 ```
 USER_DATA = ['username', 'password']
 requests.patch("https://armeot-api.herokuapp.com/messages/1"
@@ -39,6 +53,7 @@ requests.patch("https://armeot-api.herokuapp.com/messages/1"
 
 #### DELETE - allows to deletes a message
 Route: https://armeot-api.herokuapp.com//message/{id}
+After specifying the route and choosing an id, provide the infomation needed for authentication (username and password).
 ```
 USER_DATA = ['username', 'password']
 requests.delete("https://armeot-api.herokuapp.com/messages/1"
