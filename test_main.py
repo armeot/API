@@ -20,7 +20,7 @@ class ApiTest(unittest.TestCase):
     # post requests
     def test_post_request(self):
         # create a new message with correct auth data and content
-        result = requests.post(BASE, {"content": "test put request"}, auth=(USER_DATA[0], USER_DATA[1]))
+        result = requests.post(BASE, {"content": "test post request"}, auth=(USER_DATA[0], USER_DATA[1]))
         self.assertEqual(result.status_code,201)
 
         # create a new message without auth data
@@ -33,7 +33,7 @@ class ApiTest(unittest.TestCase):
 
 
 
-    # test requests
+    # delete requests
     def test_delete_request(self):
         # delete a message with correct id
         result = requests.delete(BASE+"13",  auth=(USER_DATA[0], USER_DATA[1]))
