@@ -4,7 +4,7 @@ import requests, unittest
 BASE = "http://127.0.0.1:5000/messages/"
 USER_DATA = ['user', 'secretpassword']
 
-
+# UNIT TESTS ------------------------------------------------------
 class ApiTest(unittest.TestCase):
     # get requests
     def test_get_request(self): 
@@ -30,7 +30,6 @@ class ApiTest(unittest.TestCase):
         # create a new message with blank content
         result = requests.post(BASE, {"content": ""}, auth=(USER_DATA[0], USER_DATA[1]))
         self.assertEqual(result.status_code,404)
-
 
 
     # delete requests

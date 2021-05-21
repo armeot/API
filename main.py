@@ -9,9 +9,11 @@ auth = HTTPBasicAuth()
 db = SQLAlchemy(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 
+
 USER_DATA = {
     "user": "secretpassword"
 }
+
 
 @auth.verify_password
 def verify(username, password):
@@ -19,19 +21,23 @@ def verify(username, password):
         return False
     return USER_DATA.get(username) == password
 
+
 class MessageModel(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     content = db.Column(db.String(160), nullable=False)
     views = db.Column(db.Integer, nullable=False)
 
+
 message_args = reqparse.RequestParser()
 message_args.add_argument("content", type=str, required=True)
+
 
 resource_fields = {
     'id': fields.Integer,
     'content': fields.String,
     'views': fields.Integer
 }
+
 
 # class cointains get and post requests
 class Messages(Resource):
@@ -54,6 +60,7 @@ class Messages(Resource):
         db.session.add(message)
         db.session.commit()
         return message, 201
+
 
 # class cointains delete and patch requestes
 class MessageChanges(Resource):
@@ -78,8 +85,10 @@ class MessageChanges(Resource):
         db.session.commit()
         return result
 
+
 api.add_resource(Messages, "/messages/")
 api.add_resource(MessageChanges, "/messages/<int:message_id>")
+
 
 if __name__ == '__main__':
     app.run(debug=True)
