@@ -25,14 +25,17 @@ import requests
 ```
 
 #### GET - returns a list of messages  
-Route: https://armeot-api.herokuapp.com/message/
+Local rote: http://127.0.0.1:5000/message/  
+Global route: https://armeot-api.herokuapp.com/message/
 ```
 requests.get("https://armeot-api.herokuapp.com/messages/")
 ```
 As a result api will return a data in json format.
 
 #### POST - allows to creates a new message  
-Route: https://armeot-api.herokuapp.com/message/  
+Local rote: http://127.0.0.1:5000/message/  
+Global route: https://armeot-api.herokuapp.com/message/  
+  
 After specifying the route, provide the content of the message and infomation needed for authentication (username and password).
 ```
 USER_DATA = ['username', 'password']
@@ -42,7 +45,9 @@ requests.post("https://armeot-api.herokuapp.com/messages/"
 ```
 
 #### PATCH - allows to edits a content message
-Route: https://armeot-api.herokuapp.com/message/{id}
+Local rote: http://127.0.0.1:5000/message/{id}  
+Global route: https://armeot-api.herokuapp.com/message/{id}  
+  
 After specifying the route and choosing an id, provide the new content of the message and infomation needed for authentication (username and password).
 ```
 USER_DATA = ['username', 'password']
@@ -52,7 +57,9 @@ requests.patch("https://armeot-api.herokuapp.com/messages/1"
 ```
 
 #### DELETE - allows to deletes a message
-Route: https://armeot-api.herokuapp.com//message/{id}
+Local rote: http://127.0.0.1:5000/message/{id}  
+Global route: https://armeot-api.herokuapp.com/message/{id}  
+  
 After specifying the route and choosing an id, provide the infomation needed for authentication (username and password).
 ```
 USER_DATA = ['username', 'password']
