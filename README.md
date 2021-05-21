@@ -13,9 +13,10 @@ To launch the project. Type:
 ```
 python3 main.py
 ```
-No you can acces it at:  http://127.0.0.1:5000/  
+Now you can acces it at:  http://127.0.0.1:5000/  
 ### b. Globally
-API is deployed at: https://armeot-api.herokuapp.com/
+API is deployed using Heroku.  
+You can acces it at: https://armeot-api.herokuapp.com/
 
 ## How to use
 First import HTTPBasicAuth and requests.
