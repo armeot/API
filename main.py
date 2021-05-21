@@ -41,7 +41,7 @@ class Messages(Resource):
         for m in MessageModel.query.all():
             m.views+=1
             db.session.commit()
-            result.append(m) 
+            result.append(m)
         return result
 
     @auth.login_required
